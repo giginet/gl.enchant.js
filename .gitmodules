@@ -1,0 +1,6 @@
+[submodule "enchant.js"]
+	path = enchant.js
+	url = https://github.com/wise9/enchant.js
+[submodule "kwing.coffee"]
+	path = kwing.coffee
+	url = git@github.com:giginet/kwing.coffee
