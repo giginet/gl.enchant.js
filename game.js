@@ -591,10 +591,6 @@
         Jukebox._loadSound(sound, 'audio/wav');
       }
       root = new MainScene();
-      this.onload = function() {
-        root.setup();
-        return this.pushScene(root);
-      };
       this.start();
     }
     return Shooting;
@@ -603,13 +599,22 @@
     return new Shooting();
   };
   MainScene = (function() {
-    __extends(MainScene, Scene);
+    __extends(MainScene, Scene3D);
     function MainScene() {
+      var camera;
       MainScene.__super__.constructor.apply(this, arguments);
+      this.setDirectionalLight = new DirectionalLight();
+      camera = new Camera3D();
+      this.ball = new Cube();
+      this.ball.mesh.texture = new Texture("resources/images/gigicat.png");
+      this.ball.z = -10;
+      this.ball.rotX = 0;
+      this.ball.addEventListener('enterframe', function(e) {
+        this.rotX += 0.01;
+        return this.rotation = [Math.cos(this.rotX), 0, -Math.sin(this.rotX), 0, 0, 1, 0, 0, Math.sin(this.rotX), 0, Math.cos(this.rotX), 0, 0, 0, 0, 1];
+      });
+      this.addChild(this.ball);
     }
-    MainScene.prototype.setup = function() {
-      return this;
-    };
     return MainScene;
   })();
 }).call(this);
