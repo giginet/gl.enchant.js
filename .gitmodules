@@ -4,3 +4,6 @@
 [submodule "kwing.coffee"]
 	path = kwing.coffee
 	url = git@github.com:giginet/kwing.coffee
+[submodule "MMD.js"]
+	path = MMD.js
+	url = https://github.com/edvakf/MMD.js

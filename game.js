@@ -591,6 +591,7 @@
         Jukebox._loadSound(sound, 'audio/wav');
       }
       root = new MainScene();
+      root.setup();
       this.start();
     }
     return Shooting;
@@ -601,20 +602,19 @@
   MainScene = (function() {
     __extends(MainScene, Scene3D);
     function MainScene() {
-      var camera;
       MainScene.__super__.constructor.apply(this, arguments);
-      this.setDirectionalLight = new DirectionalLight();
-      camera = new Camera3D();
-      this.ball = new Cube();
-      this.ball.mesh.texture = new Texture("resources/images/gigicat.png");
-      this.ball.z = -10;
-      this.ball.rotX = 0;
-      this.ball.addEventListener('enterframe', function(e) {
-        this.rotX += 0.01;
-        return this.rotation = [Math.cos(this.rotX), 0, -Math.sin(this.rotX), 0, 0, 1, 0, 0, Math.sin(this.rotX), 0, Math.cos(this.rotX), 0, 0, 0, 0, 1];
-      });
-      this.addChild(this.ball);
     }
+    MainScene.prototype.setup = function() {
+      var camera, homo, scene;
+      this.setDirectionalLight = new DirectionalLight();
+      camera = this.getCamera();
+      homo = new MSprite3D();
+      scene = this;
+      return homo.loadPmd('MMD.js/model', 'Miku_Hatsune_metal.pmd', function() {
+        console.log(scene);
+        return scene.addChild(this);
+      });
+    };
     return MainScene;
   })();
 }).call(this);

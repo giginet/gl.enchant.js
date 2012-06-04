@@ -1,8 +1,10 @@
 class MainScene extends Scene3D
-  constructor : ->
-    super
+  setup : ->
     @setDirectionalLight = new DirectionalLight()
-    camera = new Camera3D()
+    camera = @getCamera()
+    camera.y = 20
+    camera.z = 80
+    camera.centerY = 10
     @ball = new Cube()
     @ball.mesh.texture = new Texture "resources/images/gigicat.png"
     @ball.z = -10

@@ -28,6 +28,7 @@ class Shooting extends Game
     for sound in @config.SOUNDS
       Jukebox._loadSound sound, 'audio/wav'
     root = new MainScene()
+    root.setup()
     @start()
 
 window.onload = ->
