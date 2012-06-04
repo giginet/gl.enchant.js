@@ -2,10 +2,7 @@ class MainScene extends Scene3D
   setup : ->
     @setDirectionalLight = new DirectionalLight()
     camera = @getCamera()
-    camera.y = 20
-    camera.z = 80
-    camera.centerY = 10
-    @ball = new Cube()
+    @ball = new Sphere()
     @ball.mesh.texture = new Texture "resources/images/gigicat.png"
     @ball.z = -10
     @ball.rotX = 0
